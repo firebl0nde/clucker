@@ -81,7 +81,7 @@ class UserModelTestCase(TestCase):
 
 #########
 
-    def test_first_name_has_to_be_unique(self):
+    def test_first_name_can_be_not_unique(self):
         second_user = self._create_second_user()
         self.user.first_name = second_user.first_name
         self._assert_user_is_valid()
@@ -104,7 +104,7 @@ class UserModelTestCase(TestCase):
 
  #########
 
-    def test_last_name_has_to_be_unique(self):
+    def test_last_name_can_be_not_unique(self):
         second_user = self._create_second_user()
         self.user.last_name = second_user.last_name
         self._assert_user_is_valid()
