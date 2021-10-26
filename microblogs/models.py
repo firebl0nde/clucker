@@ -24,3 +24,15 @@ class User(AbstractUser):
             max_length = 520, ##does not enforce it
     )
 # Create your models here.
+class Post(models.Model):
+    author = models.ForeignKey(
+             User,
+             on_delete=models.CASCADE,
+             blank = False,
+            )
+    text = models.CharField(
+            blank = True, 
+            max_length = 280,
+            )
+    created_at = models.DateTimeField(auto_now_add=True)
+
