@@ -5,7 +5,11 @@
   </head>
   <body>
     <h1> Log In </h1>
-    <p> Under COnstruction </p>
+    <form action="{% url 'log_in' %}" method="post"> 
+      {% csrf_token %}
+
+      {{ form.as_p }}
+      <input type="submit" value ="Log In">
   </body>
 
 </html>
