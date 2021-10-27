@@ -34,5 +34,9 @@ class Post(models.Model):
             blank = True, 
             max_length = 280,
             )
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable = False)
+
+    class Meta:
+        ordering = ['-created_at']
+
 

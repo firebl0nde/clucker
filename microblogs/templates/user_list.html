@@ -1,0 +1,15 @@
+<html>
+  <head>
+      <title>Clucker</title>
+
+  </head>
+  <body>
+    <h1> User List </h1>
+    {% for user in usernames %}
+    <p><b><a href ='{%url 'show_user' user.id%}'>
+      {{user.username}}
+    </b></p>
+    {% endfor %}
+  </body>
+
+</html>

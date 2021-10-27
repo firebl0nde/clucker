@@ -1,12 +1,40 @@
 from django.shortcuts import redirect, render
 from .forms import SignUpForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import LogInForm
+from .forms import LogInForm, PostForm
 from django.contrib import messages
+from microblogs.models import User
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+def new_post(request):
+   # post(request)
+   # return redirect('feed')
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            text = form.save()
+            print( "hello there")
+            return redirect('feed')
+    else:
+        print ("bye there")
+        form = PostForm()
+        return redirect('feed')
+    # return render(request, 'post.html', {'form': form})
+
+def post(request):
+    form = PostForm()
+    return render(request, 'post.html', {'form': form})
+
+def show_user(request, user_id):
+    userid = user_list(request)
+    return render(request, 'show_user.html', {'id' : userid})
+
+def user_list(request):
+    all_users = User.objects.all()
+    return render(request, 'user_list.html',{'usernames' : all_users, 'id' : all_users})
 
 def feed(request):
     return render(request, 'feed.html')
