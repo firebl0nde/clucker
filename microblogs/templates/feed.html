@@ -1,16 +1,17 @@
-<html>
-  <head>
-      <title>Clucker</title>
+{% extends 'base.html'%}
+{% block body %}
+      <div class="container">
+        <div class = "row">
+          <div class = "col-sm-12 col-md-6 offset-md-3">
+            <h1> Feed </h1>
+            <p> Under COnstruction </p>
+            <form action="{% url 'post' %}" method="post"> 
+              {% csrf_token %}
 
-  </head>
-  <body>
-    <h1> Feed </h1>
-    <p> Under COnstruction </p>
-    <form action="{% url 'post' %}" method="post"> 
-      {% csrf_token %}
+              {% include 'partials/bootstrap_form.html' with form=form %}
+      <input type="submit" value ="Create Post" class= "btn btn-secondary">
 
-      {{ form.as_p }}
-      <input type="submit" value ="Create Post">
-  </body>
-
-</html>
+          </div >
+        </div >
+      </div >
+{% endblock %}
